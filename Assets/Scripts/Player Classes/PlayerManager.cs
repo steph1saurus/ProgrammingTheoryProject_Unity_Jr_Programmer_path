@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     Vector3 mPrevPos = Vector3.zero;
     Vector3 mPosDelta = Vector3.zero;
+    
 
     [SerializeField] float horizontalInput;
     [SerializeField] float forwardInput;
@@ -28,13 +29,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float shootAngle = 45f;
     [SerializeField] Transform shootingPoint;
 
-    private float initialYRotation; // Initial rotation on the y-axis
-
-    private void Start()
-    {
-        initialYRotation = transform.rotation.eulerAngles.y;
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -77,13 +72,6 @@ public class PlayerManager : MonoBehaviour
         // Instantiate the ball prefab
         GameObject ball = Instantiate(ballPrefab, shootingPoint.position, Quaternion.identity);
 
-        // Store the current rotation
-        Quaternion originalRotation = transform.rotation;
-
-        // Reset the rotation on the y-axis to the initial value
-        Vector3 euler = transform.rotation.eulerAngles;
-        euler.y = initialYRotation;
-        transform.rotation = Quaternion.Euler(euler);
 
         // Calculate the shooting direction (upward)
         Vector3 shootingDirection = transform.up;
@@ -98,8 +86,7 @@ public class PlayerManager : MonoBehaviour
         // Apply the arc velocity to the ball rigidbody
         ball.GetComponent<Rigidbody>().velocity += arcVelocity;
 
-        // Restore the original rotation
-        transform.rotation = originalRotation;
+     
 
     }
 
