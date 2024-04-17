@@ -9,30 +9,27 @@ public class BaseClass: MonoBehaviour
     private float baseSpeed = 4f;
     private float baseShootForce = 5f;
 
-    public virtual string CharacterName
-    {
+    public virtual string CharacterName {
         get => baseCharacterName; set => baseCharacterName = value;
     }
 
-    public virtual string CharacterHeight
-    {
+    public virtual string CharacterHeight{
         get => baseCharacterHeight; set => baseCharacterHeight = value;
     }
 
-    public virtual float speed
-    {
+    public virtual float speed{
         get => baseSpeed; set => baseSpeed = value;
     }
-    public virtual float shootForce
-    {
+
+    public virtual float shootForce{
         get => baseShootForce; set => baseShootForce = value;
     }
 
-    //------//
+    //player movement
     Vector3 mPrevPos = Vector3.zero;
     Vector3 mPosDelta = Vector3.zero;
 
-
+    //player inputs
     private float horizontalInput;
     private float forwardInput;
 
@@ -40,11 +37,10 @@ public class BaseClass: MonoBehaviour
     //shooting ball mechanics
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform shootingPoint;
-    private float shootAngle = 45f;
+    private float shootAngle = 60f;
 
 
 
-    // Update is called once per frame
     void Update()
     {
         MovePlayer();
