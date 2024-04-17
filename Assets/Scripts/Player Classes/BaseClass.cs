@@ -2,25 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class BaseClass: MonoBehaviour
 {
+    private string baseCharacterName = "Base";
+    private string baseCharacterHeight = "5ft";
+    private float baseSpeed = 4f;
+    private float baseShootForce = 5f;
 
-    //player movement
+    public virtual string CharacterName
+    {
+        get => baseCharacterName; set => baseCharacterName = value;
+    }
 
+    public virtual string CharacterHeight
+    {
+        get => baseCharacterHeight; set => baseCharacterHeight = value;
+    }
+
+    public virtual float speed
+    {
+        get => baseSpeed; set => baseSpeed = value;
+    }
+    public virtual float shootForce
+    {
+        get => baseShootForce; set => baseShootForce = value;
+    }
+
+    //------//
     Vector3 mPrevPos = Vector3.zero;
     Vector3 mPosDelta = Vector3.zero;
-    
+
 
     private float horizontalInput;
     private float forwardInput;
 
-    [SerializeField] float speed;
-    
 
     //shooting ball mechanics
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform shootingPoint;
-    public float shootForce;
     private float shootAngle = 45f;
 
 
@@ -31,14 +50,14 @@ public class PlayerManager : MonoBehaviour
         MovePlayer();
         RotatePlayer();
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ShootBall();
         }
 
     }
 
-    private void MovePlayer()
+    public void MovePlayer()
     {
 
         //move player left or right
@@ -51,7 +70,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    private void RotatePlayer()
+    public void RotatePlayer()
     {
         if (Input.GetMouseButton(0))
         {
@@ -61,7 +80,7 @@ public class PlayerManager : MonoBehaviour
         mPrevPos = Input.mousePosition;
     }
 
-    private void ShootBall()
+    public void ShootBall()
     {
 
         // Instantiate the ball prefab
@@ -81,10 +100,8 @@ public class PlayerManager : MonoBehaviour
         // Apply the arc velocity to the ball rigidbody
         ball.GetComponent<Rigidbody>().velocity += arcVelocity;
 
-     
+
 
     }
 
 }
-
-   
