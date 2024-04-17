@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBClass : MonoBehaviour
+public class PlayerBClass : BaseClass
 {
-    // Start is called before the first frame update
-    void Start()
+   public PlayerBClass()
     {
-        
+        CharacterName = "Raquille O' Neil";
+        characterHeight = "7ft 1in";
+        characterShootForce = 5.5f;
+        characterSpeed = 3.5f;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

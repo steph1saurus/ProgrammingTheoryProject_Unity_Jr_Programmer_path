@@ -2,61 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public abstract class BaseClass: MonoBehaviour
 {
+   
+    private string characterName;
+    private string height;
+   
+    
+   
 
-    //player movement
+    public string CharacterName {
+        get { return characterName; }
+        set { characterName = value; }
+    }
+    public string characterHeight {
+        get { return height; }
+        set { height = value; }
+    }
+    public virtual float characterShootForce {
+        get { return characterShootForce; }
+        set { characterShootForce = value; }
+    }
 
+
+    public virtual float characterSpeed {
+        get { return characterSpeed; }
+        set { characterSpeed = value; }
+    }
+
+    //------//
     Vector3 mPrevPos = Vector3.zero;
     Vector3 mPosDelta = Vector3.zero;
-    
 
-    [SerializeField] float horizontalInput;
-    [SerializeField] float forwardInput;
 
-    private float m_speed = 4f;
-    [SerializeField]
-    float speed //set one speed that people can't adjust
-    {
-        get { return m_speed; }
-        set { m_speed = value; }
+    private float horizontalInput;
+    private float forwardInput;
 
-    }
 
     //shooting ball mechanics
     [SerializeField] GameObject ballPrefab;
-    [SerializeField] float shootForce = 5f;
-    [SerializeField] float shootAngle = 45f;
     [SerializeField] Transform shootingPoint;
+    private float shootAngle = 45f;
 
-   
+
+
     // Update is called once per frame
     void Update()
     {
         MovePlayer();
         RotatePlayer();
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ShootBall();
         }
 
     }
 
-    private void MovePlayer()
+    public virtual void MovePlayer()
     {
 
         //move player left or right
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * characterSpeed * horizontalInput);
 
         //move player forward or back
         forwardInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * characterSpeed * forwardInput);
 
     }
 
-    private void RotatePlayer()
+    public virtual void RotatePlayer()
     {
         if (Input.GetMouseButton(0))
         {
@@ -66,7 +82,7 @@ public class PlayerManager : MonoBehaviour
         mPrevPos = Input.mousePosition;
     }
 
-    private void ShootBall()
+    public virtual void ShootBall()
     {
 
         // Instantiate the ball prefab
@@ -77,19 +93,17 @@ public class PlayerManager : MonoBehaviour
         Vector3 shootingDirection = transform.up;
 
         // Apply the forward force to the ball
-        ball.GetComponent<Rigidbody>().velocity = transform.forward * shootForce;
+        ball.GetComponent<Rigidbody>().velocity = transform.forward * characterShootForce;
 
         // Calculate the initial velocity based on the desired angle and force
-        Vector3 arcVelocity = shootingDirection * shootForce;
+        Vector3 arcVelocity = shootingDirection * characterShootForce;
         arcVelocity.y = Mathf.Sqrt(arcVelocity.magnitude * Physics.gravity.magnitude / Mathf.Sin(2 * Mathf.Deg2Rad * shootAngle));
 
         // Apply the arc velocity to the ball rigidbody
         ball.GetComponent<Rigidbody>().velocity += arcVelocity;
 
-     
+
 
     }
 
 }
-
-   

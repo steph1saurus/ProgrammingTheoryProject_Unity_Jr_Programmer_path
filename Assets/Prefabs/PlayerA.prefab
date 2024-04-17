@@ -271,7 +271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 306cf8b7809264dd7b3387f7da13119e, type: 2}
+  - {fileID: 2100000, guid: 6836463058eac4dffaecc22d91517c19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 2574267496611460240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2318, y: 0.4299, z: -0.009}
+  m_LocalPosition: {x: 0.2318, y: 0.494, z: -0.009}
   m_LocalScale: {x: 0.24486947, y: 0.062278725, z: 0.2552}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -462,9 +462,9 @@ GameObject:
   - component: {fileID: 8325701932440918274}
   - component: {fileID: 8188654401007403099}
   - component: {fileID: 9078678586553094182}
-  - component: {fileID: 4301719272385029974}
+  - component: {fileID: 2171565381592945010}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,24 +560,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4301719272385029974
-MonoBehaviour:
+--- !u!54 &2171565381592945010
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2884542797153866675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fe6afcc42e384770a06304e20958dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: 0
-  forwardInput: 0
-  ballPrefab: {fileID: 5632839284651805676, guid: 5db7d4e734b05481c8dbcbd3f682291d, type: 3}
-  shootForce: 5
-  shootAngle: 45
-  shootingPoint: {fileID: 7029811802837008230}
+  serializedVersion: 4
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4673161489512342417
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +649,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 306cf8b7809264dd7b3387f7da13119e, type: 2}
+  - {fileID: 2100000, guid: 6836463058eac4dffaecc22d91517c19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -745,7 +754,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 306cf8b7809264dd7b3387f7da13119e, type: 2}
+  - {fileID: 2100000, guid: 6836463058eac4dffaecc22d91517c19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -816,8 +825,8 @@ Transform:
   m_GameObject: {fileID: 5719229978570146514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23500013, y: -0.008300006, z: -0.0113}
-  m_LocalScale: {x: 0.33264711, y: 0.5275239, z: 0.23080295}
+  m_LocalPosition: {x: 0.23500013, y: 0.0173, z: -0.0113}
+  m_LocalScale: {x: 0.33264711, y: 0.57874644, z: 0.23080295}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7256191986225296981}
@@ -1092,7 +1101,7 @@ Transform:
   m_GameObject: {fileID: 9218204396680601308}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23070002, y: 0.35469997, z: -0.01099968}
+  m_LocalPosition: {x: 0.23070002, y: 0.4188, z: -0.01099968}
   m_LocalScale: {x: 0.2304168, y: 0.2393088, z: 0.21976785}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1127,7 +1136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 306cf8b7809264dd7b3387f7da13119e, type: 2}
+  - {fileID: 2100000, guid: 6836463058eac4dffaecc22d91517c19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

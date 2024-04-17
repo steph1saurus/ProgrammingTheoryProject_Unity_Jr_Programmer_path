@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCClass : MonoBehaviour
+public class PlayerCClass : BaseClass
 {
-    // Start is called before the first frame update
-    void Start()
+   public PlayerCClass()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CharacterName = "Jichael Mordan";
+        characterHeight = "6ft 6in";
+        characterShootForce = 5f;
+        characterSpeed = 4.5f;
     }
 }
