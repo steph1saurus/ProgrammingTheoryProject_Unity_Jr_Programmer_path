@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerCClass : BaseClass
 {
-   public PlayerCClass()
-    {
-        CharacterName = "Jichael Mordan";
-        characterHeight = "6ft 6in";
-        characterShootForce = 5f;
-        characterSpeed = 4.5f;
-    }
-    public override float characterSpeed { get => base.characterSpeed; set => base.characterSpeed = value; }
+ 
+    public override string CharacterName { get => base.CharacterName; set => base.CharacterName = "Jichael Mordan"; }
 
-    public override float characterShootForce { get => base.characterShootForce; set => base.characterShootForce = value; }
+    public override string CharacterHeight { get => base.CharacterHeight; set => base.CharacterHeight = "6ft 6in"; }
+
+    public override float characterSpeed { get => base.characterSpeed; set => base.characterSpeed = 5f; }
+
+    public override float characterShootForce { get => base.characterShootForce; set => base.characterShootForce = 4.5f; }
 }

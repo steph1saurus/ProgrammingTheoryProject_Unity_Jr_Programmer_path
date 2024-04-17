@@ -8,14 +8,12 @@ public abstract class BaseClass: MonoBehaviour
     private string characterName;
     private string height;
    
-    
-   
 
-    public string CharacterName {
+    public virtual string CharacterName {
         get { return characterName; }
         set { characterName = value; }
     }
-    public string characterHeight {
+    public virtual string CharacterHeight {
         get { return height; }
         set { height = value; }
     }
