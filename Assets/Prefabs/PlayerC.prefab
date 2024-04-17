@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6960382803356470151}
   - component: {fileID: 8321081445023178839}
   - component: {fileID: 2752349060510446129}
+  - component: {fileID: 2376261997915824874}
   m_Layer: 0
   m_Name: PlayerC
   m_TagString: Untagged
@@ -243,6 +244,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2376261997915824874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505994237963991360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58e8212a5603412bb105b63fb8033d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 5632839284651805676, guid: 5db7d4e734b05481c8dbcbd3f682291d, type: 3}
+  shootingPoint: {fileID: 5586639608250806633}
 --- !u!1 &1576874033788258517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 8406437432827759956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0.48, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

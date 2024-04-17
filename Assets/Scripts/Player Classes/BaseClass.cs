@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseClass: MonoBehaviour
+public class BaseClass: MonoBehaviour
 {
-   
-    private string characterName;
-    private string height;
-   
+    private string baseCharacterName = "Base";
+    private string baseCharacterHeight = "5ft";
+    private float baseSpeed = 4f;
+    private float baseShootForce = 5f;
 
-    public virtual string CharacterName {
-        get { return characterName; }
-        set { characterName = value; }
-    }
-    public virtual string CharacterHeight {
-        get { return height; }
-        set { height = value; }
-    }
-    public virtual float characterShootForce {
-        get { return characterShootForce; }
-        set { characterShootForce = value; }
+    public virtual string CharacterName
+    {
+        get => baseCharacterName; set => baseCharacterName = value;
     }
 
+    public virtual string CharacterHeight
+    {
+        get => baseCharacterHeight; set => baseCharacterHeight = value;
+    }
 
-    public virtual float characterSpeed {
-        get { return characterSpeed; }
-        set { characterSpeed = value; }
+    public virtual float speed
+    {
+        get => baseSpeed; set => baseSpeed = value;
+    }
+    public virtual float shootForce
+    {
+        get => baseShootForce; set => baseShootForce = value;
     }
 
     //------//
@@ -57,20 +57,20 @@ public abstract class BaseClass: MonoBehaviour
 
     }
 
-    public virtual void MovePlayer()
+    public void MovePlayer()
     {
 
         //move player left or right
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * characterSpeed * horizontalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
         //move player forward or back
         forwardInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * Time.deltaTime * characterSpeed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
     }
 
-    public virtual void RotatePlayer()
+    public void RotatePlayer()
     {
         if (Input.GetMouseButton(0))
         {
@@ -80,7 +80,7 @@ public abstract class BaseClass: MonoBehaviour
         mPrevPos = Input.mousePosition;
     }
 
-    public virtual void ShootBall()
+    public void ShootBall()
     {
 
         // Instantiate the ball prefab
@@ -91,10 +91,10 @@ public abstract class BaseClass: MonoBehaviour
         Vector3 shootingDirection = transform.up;
 
         // Apply the forward force to the ball
-        ball.GetComponent<Rigidbody>().velocity = transform.forward * characterShootForce;
+        ball.GetComponent<Rigidbody>().velocity = transform.forward * shootForce;
 
         // Calculate the initial velocity based on the desired angle and force
-        Vector3 arcVelocity = shootingDirection * characterShootForce;
+        Vector3 arcVelocity = shootingDirection * shootForce;
         arcVelocity.y = Mathf.Sqrt(arcVelocity.magnitude * Physics.gravity.magnitude / Mathf.Sin(2 * Mathf.Deg2Rad * shootAngle));
 
         // Apply the arc velocity to the ball rigidbody

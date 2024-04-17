@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class PlayerAClass : BaseClass
 {
+    private string PlayerAName = "Leprachaun Mames";
+    private string PlayerAHeight = "6ft 9in";
+    private float ASpeed = 4f;
+    private float AShootForce = 5.5f;
 
+    public override string CharacterName { get => PlayerAName; set => PlayerAName = value; }
 
-    public override string CharacterName { get => base.CharacterName; set => base.CharacterName = "Leprachaun Mames"; }
+    public override string CharacterHeight { get => PlayerAHeight; set => PlayerAHeight = value; }
 
-    public override string CharacterHeight { get => base.CharacterHeight; set => base.CharacterHeight = "6ft 9in"; }
+    public override float speed { get =>ASpeed; set => ASpeed = value; }
 
-    public override float characterSpeed { get => base.characterSpeed; set => base.characterSpeed = 4f; }
+    public override float shootForce { get => AShootForce; set => AShootForce = value; }
 
-    public override float characterShootForce { get => base.characterShootForce; set => base.characterShootForce = 5.5f; }
+    void Update()
+    {
+        MovePlayer();
+        RotatePlayer();
 
-    
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ShootBall();
+        }
+
+        print(CharacterName + CharacterHeight);
+    }
 }
