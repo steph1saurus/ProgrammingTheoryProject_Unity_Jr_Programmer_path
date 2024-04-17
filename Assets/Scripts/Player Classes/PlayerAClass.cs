@@ -27,6 +27,5 @@ public class PlayerAClass : BaseClass
             ShootBall();
         }
 
-        print(CharacterName + CharacterHeight);
     }
 }
