@@ -11,4 +11,7 @@ public class PlayerCClass : BaseClass
         characterShootForce = 5f;
         characterSpeed = 4.5f;
     }
+    public override float characterSpeed { get => base.characterSpeed; set => base.characterSpeed = value; }
+
+    public override float characterShootForce { get => base.characterShootForce; set => base.characterShootForce = value; }
 }

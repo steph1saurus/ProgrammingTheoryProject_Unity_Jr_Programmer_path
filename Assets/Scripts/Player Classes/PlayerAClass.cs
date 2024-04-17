@@ -16,16 +16,5 @@ public class PlayerAClass : BaseClass
 
     public override float characterShootForce { get => base.characterShootForce; set => base.characterShootForce = value; }
 
-
-    void Update()
-    {
-        MovePlayer();
-        RotatePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShootBall();
-        }
-
-    }
+    
 }
