@@ -8,10 +8,11 @@ public class MainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI countDownText;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject gameOverText;
-    [SerializeField] bool gameIsPaused;
+    public static bool gameIsPaused;
+    public static bool gameActive;
 
     public TimerScript timerScript;
-    public static bool gameActive;
+    
 
     // Start is called before the first frame update
     void Start()
