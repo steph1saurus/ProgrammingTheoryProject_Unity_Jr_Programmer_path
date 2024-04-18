@@ -7,7 +7,7 @@ public class BaseClass: MonoBehaviour
     private string baseCharacterName = "Base";
     private string baseCharacterHeight = "5ft";
     private float baseSpeed = 4f;
-    private float baseShootForce = 5f;
+    private float baseShootForce = 3f;
 
     public virtual string CharacterName {
         get => baseCharacterName; set => baseCharacterName = value;
@@ -25,19 +25,25 @@ public class BaseClass: MonoBehaviour
         get => baseShootForce; set => baseShootForce = value;
     }
 
-    //player movement
-    Vector3 mPrevPos = Vector3.zero;
-    Vector3 mPosDelta = Vector3.zero;
+    //old player movement
+    //Vector3 mPrevPos = Vector3.zero;
+    //Vector3 mPosDelta = Vector3.zero;
 
-    //player inputs
-    private float horizontalInput;
-    private float forwardInput;
+    //old player inputs
+    //private float horizontalInput;
+    //private float forwardInput;
 
+    //new player input
+    private Vector3 mPrevPos;
+    private Vector3 mPosDelta;
+
+
+    private float rotationSpeed = 10f; //rotatiing player speed
 
     //shooting ball mechanics
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform shootingPoint;
-    private float shootAngle = 60f;
+    private float shootAngle = 75f;
 
 
 
@@ -56,13 +62,30 @@ public class BaseClass: MonoBehaviour
     public void MovePlayer()
     {
 
-        //move player left or right
-        horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        //move player based on camera direection
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float forwardInput = Input.GetAxis("Vertical");
 
-        //move player forward or back
-        forwardInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+
+        //project camera direction and ignore vertical component
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        //normalize vectors
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+
+        //calculate movemeent
+        Vector3 moveDirection = (cameraForward * forwardInput + cameraRight * horizontalInput).normalized;
+        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+
+
+        //old player movement
+        //transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        //transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
     }
 
@@ -70,8 +93,12 @@ public class BaseClass: MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            //    mPosDelta = Input.mousePosition - mPrevPos;
+            //    transform.Rotate(transform.up, Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
             mPosDelta = Input.mousePosition - mPrevPos;
-            transform.Rotate(transform.up, Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
+
+            float rotationAngle = Vector3.Dot(mPosDelta, Camera.main.transform.right) * rotationSpeed * Time.deltaTime;
+            transform.Rotate(Vector3.up, rotationAngle, Space.World);
         }
         mPrevPos = Input.mousePosition;
     }

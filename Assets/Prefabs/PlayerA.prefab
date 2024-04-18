@@ -600,6 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6940bd94907451c892d717cc693806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 15
   ballPrefab: {fileID: 5632839284651805676, guid: 5db7d4e734b05481c8dbcbd3f682291d, type: 3}
   shootingPoint: {fileID: 7029811802837008230}
 --- !u!1 &4673161489512342417
