@@ -7,12 +7,12 @@ public class TimerScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float currentTime = 90f;
     [SerializeField] TextMeshProUGUI countdownText;
-    [SerializeField] bool gameActive;
+    public MainManager mainManagerScript;
 
     void Start()
     {
         StartCoroutine(Countdown(3));
-        gameActive = false;
+        
     }
 
     IEnumerator Countdown(int seconds)
@@ -30,12 +30,13 @@ public class TimerScript : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         countdownText.gameObject.SetActive(false); // Hide the countdown text after countdown finishes
-        gameActive = true;
+        MainManager.gameActive = true;
+        
     }
 
     private void Update()
     {
-        if (gameActive)
+        if (MainManager.gameActive)
         {
             StartTimer();
         }
@@ -43,8 +44,17 @@ public class TimerScript : MonoBehaviour
 
     void StartTimer()
     {
+        if (currentTime >=0)
+        { 
         currentTime -= Time.deltaTime;
+        
         SetTimerText();
+        }
+
+        else if (currentTime <=0)
+        mainManagerScript.GameOver();
+    
+       
     }
 
     private void SetTimerText()
@@ -56,10 +66,6 @@ public class TimerScript : MonoBehaviour
             timerText.color = Color.red;
         }
 
-        if (currentTime <= 0)
-        {
-            timerText.text = "0.0";
-            enabled = false;
-        }
+       
     }
 }

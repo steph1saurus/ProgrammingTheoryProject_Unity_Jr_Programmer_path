@@ -8,17 +8,22 @@ public class PointScript : MonoBehaviour
     [SerializeField] int point = 1;
     [SerializeField] int score;
     [SerializeField] TextMeshProUGUI scoreText;
+    public MainManager mainManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+       
     }
 
   
     private void OnTriggerEnter(Collider other)
     {
-        UpdateScore();   
+        if (other.gameObject.CompareTag("ball") && MainManager.gameActive)
+        {
+            UpdateScore();
+        }
     }
 
     void UpdateScore()

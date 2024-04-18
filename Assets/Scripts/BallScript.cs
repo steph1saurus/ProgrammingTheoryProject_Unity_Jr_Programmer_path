@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    IEnumerator DestroyAfter(int seconds)
     {
+        int count = seconds;
+        yield return new WaitForSeconds(5);
         
+        Destroy(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other.gameObject.CompareTag("floor"))
+        {
+            StartCoroutine(DestroyAfter(1));
+        }
     }
 }
