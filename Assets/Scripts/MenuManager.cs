@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
     [SerializeField] GameObject charMenu;
+    
 
     private void Awake()
     {
@@ -49,6 +50,9 @@ public class MenuManager : MonoBehaviour
         charMenu.SetActive(false);
     }
 
-
+    private void Update()
+    {
+        
+    }
 
 }
