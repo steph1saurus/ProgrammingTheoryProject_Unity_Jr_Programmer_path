@@ -15,10 +15,10 @@ MonoBehaviour:
   character:
   - characterName: Leprachaun Mames
     characterHeight: 6ft 10in
-    characterSprite: {fileID: -2413806693520163455, guid: 5886c9ba9b9cb417284d6d7a19fcc8d2, type: 3}
+    characterSprite: {fileID: 21300000, guid: bc92454dc150644a699205da3c7aeff9, type: 3}
   - characterName: Raquille O' Neil
     characterHeight: 7ft 2in
-    characterSprite: {fileID: 7482667652216324306, guid: 3c9fc9bca94de4ad1ae89e26479ea854, type: 3}
+    characterSprite: {fileID: 21300000, guid: 3c9fc9bca94de4ad1ae89e26479ea854, type: 3}
   - characterName: Jichael Mordan
     characterHeight: 6ft 8in
-    characterSprite: {fileID: 7482667652216324306, guid: 1ee36c1ef43a7413b9b42b68be4d7b9d, type: 3}
+    characterSprite: {fileID: 21300000, guid: 1ee36c1ef43a7413b9b42b68be4d7b9d, type: 3}
