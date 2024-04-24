@@ -3413,7 +3413,6 @@ MonoBehaviour:
   countDownText: {fileID: 1516509059}
   pausePanel: {fileID: 226259639}
   gameOverText: {fileID: 1303658386}
-  gameIsPaused: 0
   timerScript: {fileID: 1857926899}
 --- !u!1 &1871941926
 GameObject:

@@ -31,4 +31,6 @@ public class PointScript : MonoBehaviour
         score += point;
         scoreText.text = "Score: " + score;
     }
+
+
 }

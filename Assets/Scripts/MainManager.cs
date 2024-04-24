@@ -17,11 +17,9 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameActive = false;
+        gameActive = false; //game will be made active after countdown
         gameIsPaused = false;
     }
-
-    
 
    public void GameOver()
     {
