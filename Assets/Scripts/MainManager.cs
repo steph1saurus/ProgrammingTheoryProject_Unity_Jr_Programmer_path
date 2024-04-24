@@ -53,4 +53,10 @@ public class MainManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
+
+    public void QuitGame()
+    {
+
+        Application.Quit();
+    }
 }
