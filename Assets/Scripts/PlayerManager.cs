@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameObject[] characterPrefabs; //array to hold character prefabs
-    private int selectedOption = 0; //index of selected character
+    private int selectedCharacterIndex; //index of selected character
     
 
     void Start()
     {
         // Retrieve the selected character index from saved data (e.g., PlayerPrefs)
-        selectedOption = PlayerPrefs.GetInt("SelectedCharacterIndex", 0);
+        selectedCharacterIndex = PlayerPrefs.GetInt("selectedOption", 0);
 
         // Instantiate the selected character prefab at the spawn point
         InstantiateCharacter();
@@ -20,16 +20,13 @@ public class PlayerManager : MonoBehaviour
     void InstantiateCharacter()
     {
         // Check if the selected character index is valid
-        if (selectedOption >= 0 && selectedOption < characterPrefabs.Length)
+        if (selectedCharacterIndex >= 0 && selectedCharacterIndex < characterPrefabs.Length)
         {
             // Instantiate the selected character prefab at the spawn point
-            GameObject selectedCharacter = Instantiate(characterPrefabs[selectedOption], transform.position, Quaternion.identity);
+            GameObject selectedCharacter = Instantiate(characterPrefabs[selectedCharacterIndex], transform.position, Quaternion.identity);
             // Optionally, you can add scripts to control the player, set up UI, etc.
         }
-        else
-        {
-            Debug.LogError("Selected character index is out of range!");
-        }
+      
     }
 }
 
