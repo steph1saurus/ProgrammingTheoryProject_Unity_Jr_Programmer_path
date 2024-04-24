@@ -8,7 +8,7 @@ public class PlayerBClass : BaseClass
     private string PlayerBName = "Raquille O' Neil";
     private string PlayerBHeight = "7ft 1in";
     private float ASpeed = 4f;
-    private float AShootForce = 5.5f;
+    private float AShootForce = 3.5f;
 
     public override string CharacterName { get => PlayerBName; set => PlayerBName = value; }
 
@@ -20,12 +20,15 @@ public class PlayerBClass : BaseClass
 
     void Update()
     {
-        MovePlayer();
-        RotatePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (MainManager.gameActive)
         {
-            ShootBall();
+            MovePlayer();
+            RotatePlayer();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShootBall();
+            }
         }
 
     }
