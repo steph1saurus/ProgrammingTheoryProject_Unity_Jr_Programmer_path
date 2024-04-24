@@ -9,20 +9,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
     [SerializeField] GameObject charMenu;
-    
 
-    private void Awake()
-    {
-        if (instance !=null)
-        {
-            Destroy(gameObject);
-            
-        }
-        DontDestroyOnLoad(gameObject);
-        instance = this;
-        return;
-    }
-  
 
     public void StartGame()
     {
@@ -50,9 +37,5 @@ public class MenuManager : MonoBehaviour
         charMenu.SetActive(false);
     }
 
-    private void Update()
-    {
-        
-    }
-
+    
 }

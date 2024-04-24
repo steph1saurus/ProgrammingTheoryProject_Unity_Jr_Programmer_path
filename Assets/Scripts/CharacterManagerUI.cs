@@ -9,13 +9,24 @@ public class CharacterManagerUI : MonoBehaviour
     [SerializeField] CharacterDatabase characterDB; 
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI heightText;
-    [SerializeField] SpriteRenderer charSprite;
+    [SerializeField] Image charImage;
 
     private int selectedOption = 0; //keeps track which character is selected
 
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.HasKey("selectedOption"))
+        {
+            selectedOption = 0;
+        }
+
+        else
+        {
+            Load();
+
+        }
+
         UpdateCharacter(selectedOption);   
     }
 
@@ -29,6 +40,7 @@ public class CharacterManagerUI : MonoBehaviour
         }
 
         UpdateCharacter(selectedOption);
+        Save();
     }
 
 
@@ -42,14 +54,26 @@ public class CharacterManagerUI : MonoBehaviour
         }
 
         UpdateCharacter(selectedOption);
+        Save();
     }
 
     private void UpdateCharacter(int selectedOption)
     {
         Character character = characterDB.GetCharacter(selectedOption);
-        charSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
         heightText.text = character.characterHeight;
+        charImage.sprite = character.characterSprite;
     }
+
+    private void Load()
+    {
+        selectedOption = PlayerPrefs.GetInt("selectedOption");
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetInt("selectedOption", selectedOption); //Saves the currently selected character option
+    }
+       
 
 }
